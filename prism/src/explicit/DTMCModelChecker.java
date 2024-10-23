@@ -1259,6 +1259,7 @@ public class DTMCModelChecker extends ProbModelChecker
 			dtmc.mvMult(soln, soln2, unknown, false);
 			// Store intermediate results if required
 			// (compute min/max value over initial states for this step)
+			mainLog.println(iters + ": " + Utils.minMaxOverArraySubset(soln2, dtmc.getInitialStates(), true));
 			if (results != null) {
 				// TODO: whether this is min or max should be specified somehow
 				results[iters] = Utils.minMaxOverArraySubset(soln2, dtmc.getInitialStates(), true);
