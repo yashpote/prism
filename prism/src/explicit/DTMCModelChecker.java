@@ -568,7 +568,7 @@ public class DTMCModelChecker extends ProbModelChecker
 
 		// Start probabilistic reachability
 		timer = System.currentTimeMillis();
-		mainLog.println("\nStarting probabilistic reachability...");
+		mainLog.println("\nStarting probabilistic reachability...",2);
 
 		// Check for deadlocks in non-target state (because breaks e.g. prob1)
 		dtmc.checkForDeadlocks(target);
@@ -632,7 +632,7 @@ public class DTMCModelChecker extends ProbModelChecker
 		// Print results of precomputation
 		numYes = yes.cardinality();
 		numNo = no.cardinality();
-		mainLog.println("target=" + target.cardinality() + ", yes=" + numYes + ", no=" + numNo + ", maybe=" + (n - (numYes + numNo)));
+		mainLog.println("target=" + target.cardinality() + ", yes=" + numYes + ", no=" + numNo + ", maybe=" + (n - (numYes + numNo)),2);
 
 		// Compute probabilities (if needed)
 		if (numYes + numNo < n) {
@@ -667,7 +667,7 @@ public class DTMCModelChecker extends ProbModelChecker
 
 		// Finished probabilistic reachability
 		timer = System.currentTimeMillis() - timer;
-		mainLog.println("Probabilistic reachability took " + timer / 1000.0 + " seconds.");
+		mainLog.println("Probabilistic reachability took " + timer / 1000.0 + " seconds.",2);
 
 		// Update time taken
 		res.timeTaken = timer / 1000.0;
@@ -695,7 +695,7 @@ public class DTMCModelChecker extends ProbModelChecker
 		// Start precomputation
 		timer = System.currentTimeMillis();
 		if (!silentPrecomputations)
-			mainLog.println("Starting Prob0...");
+			mainLog.println("Starting Prob0...",2);
 
 		// Special case: no target states
 		if (target.isEmpty()) {
@@ -717,8 +717,8 @@ public class DTMCModelChecker extends ProbModelChecker
 		// Finished precomputation
 		timer = System.currentTimeMillis() - timer;
 		if (!silentPrecomputations) {
-			mainLog.print("Prob0");
-			mainLog.println(" took " + timer / 1000.0 + " seconds.");
+			mainLog.print("Prob0", 2);
+			mainLog.println(" took " + timer / 1000.0 + " seconds.", 2);
 		}
 
 		return result;
@@ -811,7 +811,7 @@ public class DTMCModelChecker extends ProbModelChecker
 		// Start precomputation
 		timer = System.currentTimeMillis();
 		if (!silentPrecomputations)
-			mainLog.println("Starting Prob1...");
+			mainLog.println("Starting Prob1...",2);
 
 		// Special case: no 'target' states
 		if (target.isEmpty()) {
@@ -857,8 +857,8 @@ public class DTMCModelChecker extends ProbModelChecker
 		// Finished precomputation
 		timer = System.currentTimeMillis() - timer;
 		if (!silentPrecomputations) {
-			mainLog.print("Prob1");
-			mainLog.println(" took " + timer / 1000.0 + " seconds.");
+			mainLog.print("Prob1",2);
+			mainLog.println(" took " + timer / 1000.0 + " seconds.",2);
 		}
 
 		return result;
@@ -935,8 +935,8 @@ public class DTMCModelChecker extends ProbModelChecker
 		// Finished precomputation
 		timer = System.currentTimeMillis() - timer;
 		if (!silentPrecomputations) {
-			mainLog.print("Prob1");
-			mainLog.println(" took " + iters + " iterations and " + timer / 1000.0 + " seconds.");
+			mainLog.print("Prob1",2);
+			mainLog.println(" took " + iters + " iterations and " + timer / 1000.0 + " seconds.",2);
 		}
 
 		return u;
@@ -1129,6 +1129,8 @@ public class DTMCModelChecker extends ProbModelChecker
 			unknown.andNot(known);
 
 		if (iterationsExport != null) {
+			// print something here
+			mainLog.println("Exporting iteration vectors...");
 			iterationsExport.exportVector(initBelow, 0);
 			iterationsExport.exportVector(initAbove, 1);
 		}

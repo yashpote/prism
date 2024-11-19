@@ -82,15 +82,15 @@ jboolean neh    // noexportheaders
 	}
 	export_string("%" PRId64 " %.0f\n", odd->eoff+odd->toff, DD_GetNumMinterms(ddman, vector, num_vars));
                         break;
-	case EXPORT_MATLAB: export_string("%s = sparse(%" PRId64 ",1);\n", export_name, odd->eoff+odd->toff); break;
+	case EXPORT_MATLAB: break;//export_string("%s = sparse(%" PRId64 ",1);\n", export_name, odd->eoff+odd->toff); break;
 	}
 	
 	// print main part of file
-	export_rec(vector, vars, num_vars, 0, odd, 0);
+	//export_rec(vector, vars, num_vars, 0, odd, 0);
 	
 	// close file, etc.
 	if (export_file) fclose(export_file);
-	if (na) env->ReleaseStringUTFChars(na, export_name);
+	//if (na) env->ReleaseStringUTFChars(na, export_name);
 	
 	return 0;
 }

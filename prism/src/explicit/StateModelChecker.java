@@ -588,7 +588,7 @@ public class StateModelChecker extends PrismComponent
 		// check expression for all states (null => statesOfInterest=all)
 		vals = checkExpression(model, expr, null);
 		timer = System.currentTimeMillis() - timer;
-		mainLog.println("\nTime for model checking: " + timer / 1000.0 + " seconds.");
+		//mainLog.println("\nTime for model checking: " + timer / 1000.0 + " seconds.");
 
 		// Print result to log
 		resultString = "Result";
@@ -984,6 +984,7 @@ public class StateModelChecker extends PrismComponent
 		// Look up property and check recursively
 		Property prop = propertiesFile.lookUpPropertyObjectByName(expr.getName());
 		if (prop != null) {
+			//mainLog.println("\nModel checking : " + prop);
 			mainLog.println("\nModel checking : " + prop);
 			return checkExpression(model, prop.getExpression(), statesOfInterest);
 		} else {
@@ -1173,7 +1174,7 @@ public class StateModelChecker extends PrismComponent
 			} else {
 				resultExpl += filterTrue ? "the first state" : "first state satisfying filter";
 			}
-			mainLog.println("\n" + resultExpl + ": " + resObj);
+			//mainLog.println("\n" + resultExpl + ": " + resObj,2);
 			break;
 		case RANGE:
 			// Find range of values
@@ -1245,7 +1246,7 @@ public class StateModelChecker extends PrismComponent
 			} else {
 				resultExpl += "the filter state";
 			}
-			mainLog.println("\n" + resultExpl + ": " + resObj);
+			//mainLog.println("\n" + resultExpl + ": " + resObj,2);
 			break;
 		default:
 			throw new PrismException("Unrecognised filter type \"" + expr.getOperatorName() + "\"");

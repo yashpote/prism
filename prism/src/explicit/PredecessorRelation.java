@@ -116,7 +116,7 @@ public class PredecessorRelation
 	{
 		long timer = System.currentTimeMillis();
 		
-		parent.getLog().print("Calculating predecessor relation for "+model.getModelType().fullName()+"...  ");
+		//parent.getLog().print("Calculating predecessor relation for "+model.getModelType().fullName()+"...  ");
 		parent.getLog().flush();
 
 		PredecessorRelation pre = new PredecessorRelation(model);

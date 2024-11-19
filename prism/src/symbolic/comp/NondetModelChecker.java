@@ -1732,9 +1732,9 @@ public class NondetModelChecker extends NonProbModelChecker
 		}
 
 		// print out yes/no/maybe
-		mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, allDDRowVars.n()));
-		mainLog.print(", no = " + JDD.GetNumMintermsString(no, allDDRowVars.n()));
-		mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, allDDRowVars.n()) + "\n");
+		//mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, allDDRowVars.n()),2);
+		//mainLog.print(", no = " + JDD.GetNumMintermsString(no, allDDRowVars.n()),2);
+		//mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, allDDRowVars.n()) + "\n",2);
 
 		// if maybe is empty, we have the probabilities already
 		if (maybe.equals(JDD.ZERO)) {
@@ -1831,9 +1831,9 @@ public class NondetModelChecker extends NonProbModelChecker
 		}
 
 		// print out yes/no/maybe
-		mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, allDDRowVars.n()));
-		mainLog.print(", no = " + JDD.GetNumMintermsString(no, allDDRowVars.n()));
-		mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, allDDRowVars.n()) + "\n");
+		//mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, allDDRowVars.n()), 2);
+		//mainLog.print(", no = " + JDD.GetNumMintermsString(no, allDDRowVars.n()),2);
+		//mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, allDDRowVars.n()) + "\n",2);
 
 		// if maybe is empty, we have the answer already...
 		if (maybe.equals(JDD.ZERO)) {
@@ -1978,9 +1978,9 @@ public class NondetModelChecker extends NonProbModelChecker
 		}
 
 		// print out yes/no/maybe
-		mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, allDDRowVars.n()));
-		mainLog.print(", no = " + JDD.GetNumMintermsString(no, allDDRowVars.n()));
-		mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, allDDRowVars.n()) + "\n");
+		//mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, allDDRowVars.n()),2);
+		//mainLog.print(", no = " + JDD.GetNumMintermsString(no, allDDRowVars.n()),2);
+		//mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, allDDRowVars.n()) + "\n",2);
 
 		// if maybe is empty, we have the answer already...
 		if (maybe.equals(JDD.ZERO)) {

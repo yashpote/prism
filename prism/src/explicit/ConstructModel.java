@@ -27,13 +27,12 @@
 
 package explicit;
 
+import common.Interval;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.BitSet;
 import java.util.LinkedList;
 import java.util.List;
-
-import common.Interval;
 import parser.State;
 import parser.Values;
 import parser.VarList;
@@ -191,7 +190,7 @@ public class ConstructModel extends PrismComponent
 			mainLog.printWarning("Model contains one or more unbounded variables: model construction may not terminate");
 
 		// Starting reachability...
-		mainLog.print("\nComputing reachable states...");
+		mainLog.print("\nComputing reachable states...",2);
 		mainLog.flush();
 		ProgressDisplay progress = new ProgressDisplay(mainLog);
 		progress.start();
@@ -283,6 +282,7 @@ public class ConstructModel extends PrismComponent
 				}
 				// Look at each transition in the choice
 				nt = modelGen.getNumTransitions(i);
+				
 				for (j = 0; j < nt; j++) {
 					stateNew = modelGen.computeTransitionTarget(i, j);
 					// Is this a new state?
@@ -336,6 +336,7 @@ public class ConstructModel extends PrismComponent
 						}
 					}
 				}
+				
 				// For nondet models, add collated transition to model
 				int ch = -1;
 				if (!justReach) {
@@ -380,14 +381,14 @@ public class ConstructModel extends PrismComponent
 			// Print some progress info occasionally
 			progress.updateIfReady(src + 1);
 		}
-
+		
 		// Finish progress display
-		progress.update(src + 1);
-		progress.end(" states");
+		//progress.update(src + 1);
+		//progress.end(" states");
 
 		// Reachability complete
-		mainLog.print("Reachable states exploration" + (justReach ? "" : " and model construction"));
-		mainLog.println(" done in " + ((System.currentTimeMillis() - timer) / 1000.0) + " secs.");
+		//mainLog.print("Reachable states exploration" + (justReach ? "" : " and model construction"),2);
+		//mainLog.println(" done in " + ((System.currentTimeMillis() - timer) / 1000.0) + " secs.",2);
 		//mainLog.println(states);
 
 		// Find/fix deadlocks (if required)
@@ -399,7 +400,7 @@ public class ConstructModel extends PrismComponent
 
 		if (sortStates) {
 			// Sort states and convert set to list
-			mainLog.println("Sorting reachable states list...");
+			mainLog.println("Sorting reachable states list...",2);
 			permut = states.buildSortingPermutation();
 			statesList = states.toPermutedArrayList(permut);
 			//mainLog.println(permut);
@@ -409,7 +410,6 @@ public class ConstructModel extends PrismComponent
 		states.clear();
 		states = null;
 		//mainLog.println(statesList);
-
 		// Construct new explicit-state model (with correct state ordering, if desired)
 		ModelExplicit<Value> model = null;
 		if (!justReach) {

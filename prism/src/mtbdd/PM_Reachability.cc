@@ -173,7 +173,7 @@ jlong __jlongpointer s	// start state
 	time_for_iters = time_taken;
 
 	// print iterations/timing info
-	PM_PrintToMainLog(env, "\nReachability (%s): %d iterations in %.2f seconds (average %.6f, setup %.2f)\n", reach_method==REACH_BFS?"BFS":"frontier", iters, time_taken, time_for_iters/iters, time_for_setup);
+	//PM_PrintToMainLog(env, "\nReachability (%s): %d iterations in %.2f seconds (average %.6f, setup %.2f)\n", reach_method==REACH_BFS?"BFS":"frontier", iters, time_taken, time_for_iters/iters, time_for_setup);
 
 	return ptr_to_jlong(reach);
 }

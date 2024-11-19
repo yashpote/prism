@@ -117,7 +117,8 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	 * Prints out the value of {@code b} if the log's verbosity level is at least {@code level}
 	 */
 	public void print(boolean b, int level)
-	{
+	{	
+		
 		if (level <= this.verbosityLevel)
 			print(b);
 	}
@@ -126,7 +127,7 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	 * Prints out the value of {@code c} if the log's verbosity level is at least {@code level}
 	 */
 	public void print(char c, int level)
-	{
+	{	
 		if (level <= this.verbosityLevel)
 			print(c);
 	}
@@ -135,7 +136,8 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	 * Prints out the value of {@code d} if the log's verbosity level is at least {@code level}
 	 */
 	public void print(double d, int level)
-	{
+	{	
+		println("Level"+level);
 		if (level <= this.verbosityLevel)
 			print(d);
 	}
@@ -145,6 +147,7 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	 */
 	public void print(float f, int level)
 	{
+		
 		if (level <= this.verbosityLevel)
 			print(f);
 	}
@@ -153,7 +156,8 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	 * Prints out the value of {@code i} if the log's verbosity level is at least {@code level}
 	 */
 	public void print(int i, int level)
-	{
+	{	
+		
 		if (level <= this.verbosityLevel)
 			print(i);
 	}
@@ -179,9 +183,12 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	/**
 	 * Prints out {@code s} if the log's verbosity level is at least {@code level}
 	 */
+	// set default level to 2
+
 	public void print(String s, int level)
-	{
-		if (level <= this.verbosityLevel)
+	{	
+		
+		if (level<= this.verbosityLevel)
 			print(s);
 	}
 
@@ -218,6 +225,7 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 
 	public void println(boolean b)
 	{
+		
 		print(b);
 		println();
 	}
@@ -259,7 +267,7 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	}
 
 	public void println(String s)
-	{
+	{	
 		print(s);
 		println();
 	}
@@ -384,7 +392,7 @@ public abstract class PrismLog implements Closeable, AutoCloseable
 	 */
 	public void printWarning(String s)
 	{
-		println("\nWarning: " + s);
+		//println("\nWarning: " + s);
 		this.numberOfWarnings++;
 	}
 }

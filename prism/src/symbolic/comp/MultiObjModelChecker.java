@@ -649,9 +649,9 @@ public class MultiObjModelChecker extends PrismComponent
 		}
 
 		// print out yes/no/maybe
-		mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, model.getAllDDRowVars().n()));
-		mainLog.print(", no = " + JDD.GetNumMintermsString(no, model.getAllDDRowVars().n()));
-		mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, model.getAllDDRowVars().n()) + "\n");
+		//mainLog.print("\nyes = " + JDD.GetNumMintermsString(yes, model.getAllDDRowVars().n()),2);
+		//mainLog.print(", no = " + JDD.GetNumMintermsString(no, model.getAllDDRowVars().n()),2);
+		//mainLog.print(", maybe = " + JDD.GetNumMintermsString(maybe, model.getAllDDRowVars().n()) + "\n",2);
 
 		// compute probabilities
 		mainLog.println("\nComputing remaining probabilities...");

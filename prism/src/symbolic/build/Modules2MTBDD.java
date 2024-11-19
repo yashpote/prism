@@ -316,9 +316,9 @@ public class Modules2MTBDD
 
 			// Print some info (if extraddinfo flag on)
 			if (prism.getExtraDDInfo()) {
-				mainLog.print("Transition matrix (pre-reachability): ");
-				mainLog.print(JDD.GetNumNodes(trans) + " nodes (");
-				mainLog.print(JDD.GetNumTerminals(trans) + " terminal)\n");
+				mainLog.print("Transition matrix (pre-reachability): ",2);
+				mainLog.print(JDD.GetNumNodes(trans) + " nodes (",2);
+				mainLog.print(JDD.GetNumTerminals(trans) + " terminal)\n",2);
 			}
 
 			// build bdd for initial state(s)
@@ -370,7 +370,7 @@ public class Modules2MTBDD
 
 			// do reachability (or not)
 			if (prism.getDoReach()) {
-				mainLog.print("\nComputing reachable states...\n");
+				mainLog.print("\nComputing reachable states...\n",2);
 				model.doReachability();
 				model.filterReachableStates();
 			}

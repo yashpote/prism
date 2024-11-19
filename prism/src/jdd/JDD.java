@@ -29,7 +29,6 @@
 package jdd;
 
 import java.util.*;
-
 import prism.PrismLog;
 
 public class JDD

@@ -1212,7 +1212,7 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 		ModulesFile modulesFile = null;
 
 		// open file
-		mainLog.print("\nParsing PRISM model file \"" + file + "\"...\n");
+		mainLog.print("\nParsing PRISM model file \"" + file + "\"...\n",2);
 		strModel = new FileInputStream(file);
 
 		try {
@@ -1805,9 +1805,9 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 	{
 		mainLog.println();
 		if (getModelSource() == ModelSource.EXPLICIT_FILES && modelImporter != null) {
-			mainLog.println("Type:        " + modelImporter.getModelTypeString());
+			mainLog.println("Type:        " + modelImporter.getModelTypeString(),2);
 		} else {
-			mainLog.println("Type:        " + modelInfo.getModelType());
+			mainLog.println("Type:        " + modelInfo.getModelType(),2);
 		}
 		if (modelInfo instanceof ModulesFile) {
 			mainLog.println("Modules:     " + String.join(" ", ((ModulesFile) modelInfo).getModuleNames()));
@@ -1934,6 +1934,7 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 		if (currentModelDetails.modelGenerator == null && buildIfMissing) {
 			throw new PrismException("Could not create a model generator");
 		}
+		
 		return currentModelDetails.modelGenerator;
 	}
 
@@ -2117,7 +2118,7 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 				throw new PrismException("You cannot build a " + getModelType() + " model explicitly, only perform model checking");
 			}
 
-			mainLog.print("\nBuilding model (engine:" + getCurrentEngine().toString().toLowerCase() + ")...\n");
+			mainLog.print("\nBuilding model (engine:" + getCurrentEngine().toString().toLowerCase() + ")...\n",2);
 			if (getUndefinedModelValues() != null && getUndefinedModelValues().getNumValues() > 0)
 				mainLog.println("Model constants: " + getUndefinedModelValues());
 
@@ -2152,6 +2153,8 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 				break;
 			case EXPLICIT:
 			case EXACT:
+				
+				
 				explicit.Model<?> newModelExpl;
 				switch (getModelSource()) {
 				case PRISM_MODEL:
@@ -2185,9 +2188,9 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 			default:
 				throw new PrismException("Unknown engine " + getCurrentEngine());
 			}
-			
+
 			l = System.currentTimeMillis() - l;
-			mainLog.println("\nTime for model construction: " + l / 1000.0 + " seconds.");
+			//mainLog.println("\nTime for model construction: " + l / 1000.0 + " seconds.");
 
 			// For digital clocks, do some extra checks on the built model
 			if (isModelSourceDigitalClocks()) {
@@ -2239,7 +2242,7 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 
 			// Print model stats
 			mainLog.println();
-			mainLog.println("Type:        " + getBuiltModel().getModelType());
+			mainLog.println("Type:        " + getBuiltModel().getModelType(),2);
 			if (getBuiltModelType() == ModelBuildType.SYMBOLIC) {
 				getBuiltModelSymbolic().printTransInfo(mainLog, getExtraDDInfo());
 			} else {
@@ -2315,7 +2318,7 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 			throw new PrismException("You cannot build a " + modulesFile.getModelType() + " model explicitly, only perform model checking");
 		}
 
-		mainLog.print("\nBuilding model...\n");
+		mainLog.print("\nBuilding model...\n",2);
 		if (getUndefinedModelValues() != null && getUndefinedModelValues().getNumValues() > 0)
 			mainLog.println("Model constants: " + getUndefinedModelValues());
 
@@ -2332,7 +2335,7 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 		model = expm2mtbdd.buildModel((explicit.Model<Double>) modelExpl, statesList, modulesFile, false);
 		l = System.currentTimeMillis() - l;
 
-		mainLog.println("\nTime for model construction: " + l / 1000.0 + " seconds.");
+		//mainLog.println("\nTime for model construction: " + l / 1000.0 + " seconds.");
 
 		return model;
 	}
@@ -3096,7 +3099,8 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 
 		if (!isModelSourceDigitalClocks())
 			mainLog.printSeparator();
-		mainLog.println("\nModel checking: " + prop);
+		//mainLog.println("\nModel checking: " + prop);
+		mainLog.println(prop);
 		if (getUndefinedModelValues() != null && getUndefinedModelValues().getNumValues() > 0)
 			mainLog.println("Model constants: " + getUndefinedModelValues());
 		if (definedPFConstants != null && definedPFConstants.getNumValues() > 0)
@@ -3174,9 +3178,9 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 			setEngine(Prism.EXPLICIT);
 		}
 		try {
+
 			// Build model, if necessary
 			buildModelIfRequired();
-
 			// Compatibility check
 			if (genStrat && getModelType().nondeterministic() && getCurrentEngine() == PrismEngine.SYMBOLIC) {
 				if (!((NondetModel) getBuiltModelSymbolic()).areAllChoiceActionsUnique())
@@ -3184,7 +3188,6 @@ public class Prism extends PrismComponent implements PrismSettingsListener
 							+ "because some state of the model do not have unique action labels for each choice. "
 							+ "Either switch to the explicit engine or add more action labels to the model");
 			}
-
 			// Check if we need to switch to MTBDD engine
 			if (getCurrentEngine() == PrismEngine.SYMBOLIC && getEngine() != MTBDD && !switchedToExplicitEngine) {
 				// Either because number of states is two big for double-valued solution vectors

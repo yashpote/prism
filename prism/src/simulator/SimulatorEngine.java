@@ -1871,7 +1871,7 @@ public class SimulatorEngine extends PrismComponent
 		// Display results to log
 		if (results.length == 1) {
 			if (!(results[0].getResult() instanceof PrismException))
-				mainLog.println("\nResult: " + results[0].getResultAndAccuracy());
+				mainLog.println("\nResult: " + results[0].getResultAndAccuracy(),2);
 		} else {
 			mainLog.println("\nResults:");
 			for (int i = 0; i < results.length; i++)

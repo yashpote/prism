@@ -283,7 +283,6 @@ public class PrismCL implements PrismModelListener
 
 		// Initialise
 		initialise(args);
-
 		// Import (and optionally re-export) results
 		if (importresults) {
 			importResults();
@@ -504,15 +503,17 @@ public class PrismCL implements PrismModelListener
 
 						// if a results vector was stored, and we need to export it, do so
 						if (exportvector && res.getVector() != null) {
-							mainLog.print("\nExporting vector of results for all states ");
-							mainLog.println(exportVectorFilename.equals("stdout") ? "below:" : "to file \"" + exportVectorFilename + "\"...");
+
+							// print the type of res.get
+							mainLog.println();
+							mainLog.println(exportVectorFilename.equals("stdout") ? "below:" : "to file \"" + exportVectorFilename + "\"...",2);
 							PrismFileLog tmpLog = new PrismFileLog(exportVectorFilename);
 							if (!tmpLog.ready()) {
 								errorAndExit("Couldn't open file \"" + exportVectorFilename + "\" for output");
 							}
 							boolean toStdout = exportVectorFilename.equals("stdout");
 							try {
-								res.getVector().print(tmpLog, false, false, toStdout, toStdout);
+								res.getVector().print(tmpLog, false, true, toStdout, toStdout);
 							} catch (PrismException e) {
 								error(e.getMessage());
 							}
@@ -728,7 +729,7 @@ public class PrismCL implements PrismModelListener
 		try {
 			// if properties file specified...
 			if (propertiesFilename != null) {
-				mainLog.print("\nParsing properties file \"" + propertiesFilename + "\"...\n");
+				mainLog.print("\nParsing properties file \"" + propertiesFilename + "\"...\n",2);
 				propertiesFile = prism.parsePropertiesFile(new File(propertiesFilename));
 			}
 			// if properties were given on command line...
@@ -1209,12 +1210,12 @@ public class PrismCL implements PrismModelListener
 		int numWarnings = mainLog.getNumberOfWarnings();
 		if (numWarnings > 0) {
 			mainLog.printSeparator();
-			mainLog.print("\nNote: There ");
+			mainLog.print("\nNote: There ", 2);
 			if (numWarnings == 1)
-				mainLog.print("was 1 warning");
+				mainLog.print("was 1 warning", 2);
 			else
-				mainLog.print("were " + numWarnings + " warnings");
-			mainLog.println(" during computation.");
+				mainLog.print("were " + numWarnings + " warnings", 2);
+			mainLog.println(" during computation.", 2);
 		}
 		mainLog.println();
 		// Close logs (in case they are files)

@@ -51,7 +51,7 @@ JNIEXPORT jint JNICALL Java_mtbdd_PrismMTBDD_PM_1ExportLabels
 (
 JNIEnv *env,
 jclass cls,
-jlongArray __jlongpointer la,		// labels
+jlongArray __jlongpointer la,	// labels
 jobjectArray ln,	// label names
 jstring na,		// export name
 jlong __jlongpointer v,	// (row) vars

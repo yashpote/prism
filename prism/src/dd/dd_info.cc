@@ -95,7 +95,7 @@ int num_vars)
 	nodes = Cudd_DagSize(dd);
 	terminals = Cudd_CountLeaves(dd);
 	minterms = Cudd_CountMinterm(ddman, dd, num_vars);
-	fprintf(dd_out, "%d nodes (%d terminal), %.0f minterms\n", nodes, terminals, minterms);
+	//fprintf(dd_out, "%d nodes (%d terminal), %.0f minterms\n", nodes, terminals, minterms);
 }
 
 //------------------------------------------------------------------------------

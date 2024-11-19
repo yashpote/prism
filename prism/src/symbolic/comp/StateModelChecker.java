@@ -1368,7 +1368,7 @@ public class StateModelChecker extends PrismComponent implements ModelChecker
 			} else {
 				resultExpl += filterTrue ? "the first state" : "first state satisfying filter";
 			}
-			mainLog.println("\n" + resultExpl + ": " + resObj);
+			//mainLog.println("\n" + resultExpl + ": " + resObj,2);
 			break;
 		case RANGE:
 			// Find range of values
@@ -1471,7 +1471,7 @@ public class StateModelChecker extends PrismComponent implements ModelChecker
 			} else {
 				resultExpl += "the filter state";
 			}
-			mainLog.println("\n" + resultExpl + ": " + resObj);
+			//mainLog.println("\n" + resultExpl + ": " + resObj,2);
 			break;
 		default:
 			JDD.Deref(ddFilter);

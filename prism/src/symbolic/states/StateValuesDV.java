@@ -26,9 +26,8 @@
 
 package symbolic.states;
 
-import java.io.*;
-
 import dv.*;
+import java.io.*;
 import jdd.*;
 import odd.*;
 import parser.VarList;
